@@ -1,22 +1,13 @@
-# JavaScript - zadania domowe
-> Kod wpisz w odpowiednim pliku, zgodnie z poleceniem zadania.
-BARDZO WAŻNE - Wasze zadania są sprawdzanie przy pomocy automatycznego systemu. Żeby odpowiedzi zostały uznane za poprawne strony MUSZĄ wyświetlać te same komunikaty co w treści zadania, a funkcje i metody MUSZĄ posiadać nazwy dokładnie takie same jak podane
-w zadaniu.
+# Order Your Pizza
 
-## Dzień 4 - DOM
-> Zadanie 1 wykonaj w pliku app.js
+## Description:
+"Order Your Pizza" is a website, where you can choose your pizza and calculate its price.
 
-#### Zadanie 1
+## Technologies:
+- HTML5
+- CSS
+- jQuery
+- webpack
 
-Plik HTML do tego zadania to plik **pizza.html**, a plik js to **app.js**.
-
-Na stronie znajduje się formularz do zamówienia pizzy. W formularzu znajduje się pole z checkboxami, w którym użytkownik może wybrać sobie dodatki.
-Cena każdego z dodatków jest trzymana w atrybucie ```data-price```.
-Napisz takie eventy, żeby po zaznaczeniu checkoxa wyświetlała się poprawna kwota zamówienia oraz po wysłaniu formularza
-wewnątrz elementu ```page-info``` wyświetliła się następująca informacja: **"Do zapłaty: [odpowiednia kwota]"**, gdzie [odpowiednia kwota] to wartość zamówienia. Pamiętaj o tym, że kliknięcie w przycisk wywołuje domyślną akcję przeładowania strony. Zablokuj tą akcję, aby móc zobaczyć wpisaną informację do elmentu ```page-info```.
-
-Zwróć uwagę na dwa specjalne checkboxy:
-* Wyczyść &ndash; powinien odznaczyć wszystkie inne opcje,
-* Wszystkie dodatki &ndash; powinien zaznaczyć wszystkie inne opcje (poza none).
-
--------------------------------------------------------------------------------
+## Preview: 
+Check the preview [HERE](https://cenora6.github.io/To-Do-List/)
