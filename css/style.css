@@ -121,12 +121,13 @@ body::after {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: flex-end;
     padding: 0 2rem;
 }
 
 h2 {
     font-size: 4rem;
-    margin: 5rem 0;
+    margin-bottom: 5rem;
     color: white;
     font-weight: 300;
     text-shadow:
@@ -210,4 +211,65 @@ h2 {
 
 .size input {
     visibility: hidden;
+}
+
+.pizza-size {
+    margin: 0 10rem;
+}
+
+.btn-next {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+}
+
+.btn-next button {
+    width: 10rem;
+    height: 4rem;
+    background: transparent;
+    cursor: pointer;
+    transition: ease 0.5s;
+    outline: none;
+    border: none;
+    position: relative;
+    color: #ffffff;
+    text-shadow: -2px 2px 0 #000;
+    font-family: 'Sacramento', cursive;
+    font-size: 2rem;
+}
+
+.btn-next button::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    right: 5rem;
+    bottom: 0.5rem;
+}
+
+.btn-next button:hover, .btn-next button:active {
+    background: url("/images/button.png") no-repeat;
+    background-size: 5rem 100%;
+    background-position-x: 3rem;
+    opacity: 0;
+    animation: fadeIn 3s infinite, moveForward 3s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes moveForward {
+    0% {
+        background-position-x: -5rem;
+    }
+    100% {
+        background-position-x: 12rem;
+    }
 }

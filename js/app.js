@@ -9,7 +9,10 @@ $(function () {
     const image = sizeForm.find('img');
 
     sizeChoose.css({
+        top: "0.4rem",
         left: "0.2rem",
+        width: "1.5rem",
+        height: "1.5rem",
     });
 
     image.css({
@@ -18,7 +21,7 @@ $(function () {
 
     small.on('click', function () {
         sizeChoose.css({
-            top: "0",
+            top: "0.4rem",
             left: "0.2rem",
             width: "1.5rem",
             height: "1.5rem",
@@ -30,7 +33,7 @@ $(function () {
 
     medium.on('click', function () {
         sizeChoose.css({
-            top: "-0.6rem",
+            top: "-0.3rem",
             left: "6rem",
             width: "2rem",
             height: "2.5rem",
