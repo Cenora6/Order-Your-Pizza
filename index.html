@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='css/style.css'>
     <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,48 +19,64 @@
             <h1>Order Your Pizza</h1>
         </div>
 
-        <div class='panel-body'>
-            <form>
-                <div class="checkbox">
-                    <label><input type="checkbox">Wszystkie dodatki</label>
+        <div class='main-panel pizza-size'>
+            <h2>Choose the size</h2>
+            <form class="size">
+                <div class="radio">
+                    <div class="choose"><img src="images/choose.png" alt="choose"/></div>
+                    <div class="single">
+                        <input type="radio" name="size" id="small"/>
+                        <label for="small">Small</label>
+                    </div>
+
+                    <div class="single">
+                        <input type="radio" name="size" id="medium"/>
+                        <label for="medium">Medium</label>
+                    </div>
+                    <div class="single">
+                        <input type="radio" name="size" id="large"/>
+                        <label for="large">Large</label>
+                    </div>
+                    <div class="single">
+                        <input type="radio" name="size" id="extra"/>
+                        <label for="extra">Extra Large</label>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" data-price="3.50">Dodatkowy ser, 3,50 zł</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" data-price="2.20">Dodatkowy sos, 2,20 zł</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" data-price="5.00">Dodatkowa szynka, 5 zł</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" data-price="4.10">Ananas, 4,10 zł</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" data-price="3.50">Pieczarki, 3,50 zł</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox">Wyczyść</label>
-                </div>
-                <br>
-                <p>
-                    <button class='btn btn-primary'>Submit</button>
-                </p>
             </form>
-        </div>
 
-        <div class='page-header'>
-            <h1>Dodatki</h1>
-            <p>
-                Kwota za dodatki: <span id="price">0zł</span>
-            </p>
+            <!--            <form>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox">Wszystkie dodatki</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox" data-price="3.50">Dodatkowy ser, 3,50 zł</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox" data-price="2.20">Dodatkowy sos, 2,20 zł</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox" data-price="5.00">Dodatkowa szynka, 5 zł</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox" data-price="4.10">Ananas, 4,10 zł</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox" data-price="3.50">Pieczarki, 3,50 zł</label>-->
+            <!--                </div>-->
+            <!--                <div class="checkbox">-->
+            <!--                    <label><input type="checkbox">Wyczyść</label>-->
+            <!--                </div>-->
+            <!--                <br>-->
+            <!--                <p>-->
+            <!--                    <button class='btn btn-primary'>Submit</button>-->
+            <!--                </p>-->
+            <!--            </form>-->
         </div>
+    </div>
 </div>
-<script
-        src="https://code.jquery.com/jquery-3.1.1.js"
-        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-        crossorigin="anonymous"></script>
-<script src="js/out.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/out.js"></script>
 </body>
+
 </html>
