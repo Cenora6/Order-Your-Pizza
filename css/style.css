@@ -503,4 +503,100 @@ label[for=cheeseFilled] {
 
 .pizza-confirm {
     display: none;
+    margin: 0 1rem;
+}
+
+.confirm-form {
+    height: 55%;
+    width: 109%;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.confirm .single {
+    display: flex;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    border-radius: 2rem;
+    z-index: 1;
+    width: 42.5rem;
+    text-shadow: 1px 1px 0 #000;
+    margin: 2rem 0;
+}
+
+.confirm .single img {
+    width: 30%;
+    height:  30%;
+    z-index: 20;
+    padding: 1rem;
+}
+
+.confirm .single h3 {
+    z-index: 20;
+    margin: 1rem;
+    font-size: 2.5rem;
+    font-family: 'Sacramento', cursive;
+    font-weight: 300;
+}
+
+.confirm .single p {
+    z-index: 20;
+    margin: 1rem;
+    font-size: 0.8rem;
+    position: relative;
+    bottom: 2rem;
+}
+
+.confirm .single p::after {
+    content: "";
+    width: 86%;
+    background: white;
+    height: 1%;
+    border-bottom: 0.1rem solid white;
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+}
+
+.confirm .single .size-confirmation {
+    z-index: 20;
+    margin: 1rem;
+    position: relative;
+    bottom: 3rem;
+    font-size: 0.8rem;
+}
+
+.confirm .quantity {
+    margin: 0 1rem;
+    position: relative;
+    bottom: 3rem;
+}
+
+.confirm .quantity i {
+    margin: 0 0.5rem;
+    transition: 2s;
+}
+
+.confirm .description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

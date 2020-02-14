@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='css/style.css'>
     <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e817da4ca7.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -165,7 +166,7 @@
 
         <div class='main-panel pizza-ingredients'>
             <h2>Choose the extra ingredients</h2>
-            <form class="type">
+            <form class="ingredients-form">
                 <div class="ingredients-checkbox">
                     <div class="single">
                         <input type="checkbox" name="ingredients" id="mushrooms"/>
@@ -227,11 +228,20 @@
 
         <div class='main-panel pizza-confirm'>
             <h2>Your order</h2>
-            <form class="type">
+            <form class="confirm-form">
                 <div class="confirm">
                     <div class="single">
-                        <input type="checkbox" name="ingredients" id="mushrooms"/>
-                        <label for="mushrooms">Mushrooms</label>
+                        <img src="images/pepperoni.png" alt="pizza"/>
+                        <div class="description">
+                            <h3>Pepperoni</h3>
+                            <p>Extra ingredients: tomato, egg, cheese</p>
+                            <span class="size-confirmation">Size: Large</span>
+                            <div class="quantity">
+                                <i class="fas fa-minus-circle"></i>
+                                <span>1</span>
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

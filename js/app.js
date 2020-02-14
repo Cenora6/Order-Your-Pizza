@@ -92,6 +92,22 @@ $(function () {
         $(this).addClass('chosen');
     });
 
+    const quantityNumber = $('.quantity span');
+    const plus = $('.fa-plus-circle');
+    const minus = $('.fa-minus-circle');
+
+    plus.on('click', function () {
+        $(this).css({
+            transform: "rotate(180deg)",
+        })
+    });
+
+    minus.on('click', function () {
+        $(this).css({
+            transform: "rotate(180deg)",
+        })
+    });
+
     const pizzaSizeStep = $('.pizza-size');
     const pizzaCrustStep = $('.pizza-crust');
     const pizzaTypeStep = $('.pizza-type');
