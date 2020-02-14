@@ -65,7 +65,43 @@ $(function () {
         image.css({
             width: "8rem",
         });
-    })
+    });
 
+    const crustLabel = $('.crust label');
+
+    crustLabel.on('click', function (e) {
+        crustLabel.css({
+            filter: "grayscale(100%)",
+        });
+        $(this).css({
+                filter: "grayscale(0%)",
+            })
+    });
+
+    const sizeButton = $('.size-btn');
+    const pizzaSizeStep = $('.pizza-size');
+
+    const crustNextButton = $('.crust-next-btn');
+    const crustPrevButton = $('.crust-prev-btn');
+    const pizzaCrustStep = $('.pizza-crust');
+
+    sizeButton.on('click', function () {
+        pizzaSizeStep.fadeOut(500);
+        pizzaCrustStep.fadeIn(3000);
+        setTimeout(
+            pizzaCrustStep.css({
+                display: "flex",
+                alignItems: "center",
+            }), 600)
+    });
+
+    crustPrevButton.on('click', function () {
+        pizzaCrustStep.fadeOut(200);
+        pizzaSizeStep.fadeIn(2000);
+        setTimeout(
+            pizzaSizeStep.css({
+                display: "flex",
+            }), 600)
+    })
 
 });

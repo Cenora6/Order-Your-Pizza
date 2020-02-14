@@ -96,23 +96,23 @@ body::after {
 
     font-weight: 400;
     text-shadow:
-        0 -1px 0 #fff,
-        0 1px 0 #2e2e2e,
-        0 2px 0 #2c2c2c,
-        0 3px 0 #2a2a2a,
-        0 4px 0 #282828,
-        0 5px 0 #262626,
-        0 6px 0 #242424,
-        0 7px 0 #222,
-        0 8px 0 #202020,
-        0 9px 0 #1e1e1e,
-        0 10px 0 #1c1c1c,
-        0 11px 0 #1a1a1a,
-        0 12px 0 #181818,
-        0 13px 0 #161616,
-        0 14px 0 #141414,
-        0 15px 0 #121212,
-        0 22px 30px rgba(0, 0, 0, 0.9);
+            0 -1px 0 #fff,
+            0 1px 0 #2e2e2e,
+            0 2px 0 #2c2c2c,
+            0 3px 0 #2a2a2a,
+            0 4px 0 #282828,
+            0 5px 0 #262626,
+            0 6px 0 #242424,
+            0 7px 0 #222,
+            0 8px 0 #202020,
+            0 9px 0 #1e1e1e,
+            0 10px 0 #1c1c1c,
+            0 11px 0 #1a1a1a,
+            0 12px 0 #181818,
+            0 13px 0 #161616,
+            0 14px 0 #141414,
+            0 15px 0 #121212,
+            0 22px 30px rgba(0, 0, 0, 0.9);
 }
 
 .main-panel {
@@ -192,8 +192,8 @@ h2 {
     height: 1.5rem;
     z-index: 4;
     transform-origin: right center;
-    animation: spin 2000ms linear infinite;
-    transition: all 1s;
+    animation: spin 2s linear infinite;
+    transition: all 2s;
 }
 
 @keyframes spin {
@@ -223,7 +223,13 @@ h2 {
     right: 3rem;
 }
 
-.btn-next button {
+.btn-prev {
+    position: absolute;
+    bottom: 3rem;
+    right: 40rem;
+}
+
+.btn-next button, .btn-prev button {
     width: 10rem;
     height: 4rem;
     background: transparent;
@@ -238,7 +244,7 @@ h2 {
     font-size: 2rem;
 }
 
-.btn-next button::after {
+.btn-next button::after, .btn-prev button::after  {
     content: "";
     position: absolute;
     border-radius: 50%;
@@ -249,11 +255,25 @@ h2 {
 }
 
 .btn-next button:hover, .btn-next button:active {
-    background: url("/images/button.png") no-repeat;
+    background: url("/images/buttonNext.png") no-repeat;
     background-size: 5rem 100%;
     background-position-x: 3rem;
     opacity: 0;
+}
+
+.btn-prev button:hover, .btn-prev button:active {
+    background: url("/images/buttonPrev.png") no-repeat;
+    background-size: 5rem 100%;
+    background-position-x: 3rem;
+    opacity: 0;
+}
+
+.btn-next button:hover, .btn-next button:active {
     animation: fadeIn 3s infinite, moveForward 3s;
+}
+
+.btn-prev button:hover, .btn-prev button:active {
+    animation: fadeIn 3s infinite, moveBack 3s;
 }
 
 @keyframes fadeIn {
@@ -272,4 +292,63 @@ h2 {
     100% {
         background-position-x: 12rem;
     }
+}
+
+@keyframes moveBack {
+    0% {
+        background-position-x: 12rem;
+    }
+    100% {
+        background-position-x: -5rem;
+    }
+}
+
+.pizza-crust {
+    display: none;
+}
+
+.pizza-crust .single {
+    margin: 1rem 0;
+}
+
+.crust-radio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.crust-radio label {
+    cursor: pointer;
+    font-size:  3rem;
+    filter: grayscale(100%);
+    transition: 0.8s;
+}
+
+.crust-radio input {
+    visibility: hidden;
+}
+
+label[for=thin] {
+    font-weight: 200;
+    color: mediumseagreen;
+}
+
+label[for=thick] {
+    font-weight: 700;
+    color: #b34648;
+}
+
+label[for=cheeseFilled] {
+    color: #ffd147;
+    font-weight: 700;
+    z-index: 1;
+    background: url(https://cdn5.f-cdn.com/contestentries/1532532/23450105/5d210a4d2e962_thumb900.jpg) no-repeat center center;
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.pizza-type {
+    display: none;
 }
