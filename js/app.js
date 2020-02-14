@@ -92,18 +92,19 @@ $(function () {
         $(this).addClass('chosen');
     });
 
-    const sizeNextButton = $('.size-btn');
     const pizzaSizeStep = $('.pizza-size');
-
-    const crustPrevButton = $('.crust-prev-btn');
     const pizzaCrustStep = $('.pizza-crust');
-    const crustNextButton = $('.crust-next-btn');
-
-    const typePrevButton = $('.type-prev-btn');
     const pizzaTypeStep = $('.pizza-type');
-    const typeNextButton = $('.type-next-btn');
+    const pizzaIngredientsStep = $('.pizza-ingredients');
+    const pizzaConfirmStep = $('.pizza-confirm');
 
-    sizeNextButton.on('click', function () {
+    const sizeButtons = $('.pizza-size button');
+    const crustButtons = $('.pizza-crust button');
+    const typeButtons = $('.pizza-type button');
+    const ingredientsButtons = $('.pizza-ingredients button');
+    const confirmButtons = $('.pizza-confirm button');
+
+    sizeButtons.on('click', function () {
         pizzaSizeStep.fadeOut(100);
         pizzaCrustStep.fadeIn(2000);
         setTimeout(
@@ -113,33 +114,63 @@ $(function () {
             }), 600)
     });
 
-    crustPrevButton.on('click', function () {
-        pizzaCrustStep.fadeOut(100);
-        pizzaSizeStep.fadeIn(2000);
-        setTimeout(
-            pizzaSizeStep.css({
-                display: "flex",
-            }), 600)
+    crustButtons.on('click', function () {
+        if($(this).text() === "Previous") {
+            pizzaCrustStep.fadeOut(100);
+            pizzaSizeStep.fadeIn(2000);
+            setTimeout(
+                pizzaSizeStep.css({
+                    display: "flex",
+                }), 600)
+        } else {
+            pizzaCrustStep.fadeOut(100);
+            pizzaTypeStep.fadeIn(2000);
+            setTimeout(
+                pizzaTypeStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        }
     });
 
-    crustNextButton.on('click', function () {
-        pizzaCrustStep.fadeOut(100);
-        pizzaTypeStep.fadeIn(2000);
-        setTimeout(
-            pizzaTypeStep.css({
-                display: "flex",
-                alignItems: "center",
-            }), 600)
+    typeButtons.on('click', function () {
+        if($(this).text() === "Previous") {
+            pizzaTypeStep.fadeOut(100);
+            pizzaCrustStep.fadeIn(2000);
+            setTimeout(
+                pizzaCrustStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        } else {
+            pizzaTypeStep.fadeOut(100);
+            pizzaIngredientsStep.fadeIn(2000);
+            setTimeout(
+                pizzaIngredientsStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        }
     });
 
-    typePrevButton.on('click', function () {
-        pizzaTypeStep.fadeOut(100);
-        pizzaCrustStep.fadeIn(2000);
-        setTimeout(
-            pizzaCrustStep.css({
-                display: "flex",
-                alignItems: "center",
-            }), 600)
+    ingredientsButtons.on('click', function () {
+        if($(this).text() === "Previous") {
+            pizzaIngredientsStep.fadeOut(100);
+            pizzaTypeStep.fadeIn(2000);
+            setTimeout(
+                pizzaTypeStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        } else {
+            pizzaIngredientsStep.fadeOut(100);
+            pizzaConfirmStep.fadeIn(2000);
+            setTimeout(
+                pizzaConfirmStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        }
     });
 
 });

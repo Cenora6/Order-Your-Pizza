@@ -441,3 +441,66 @@ label[for=cheeseFilled] {
     cursor: pointer;
     animation: opacity 0.5s;
 }
+
+.pizza-ingredients {
+    display: none;
+}
+
+.ingredients-checkbox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.ingredients-checkbox .single {
+    margin: 2rem 1rem;
+    width: 9rem;
+}
+
+.ingredients-checkbox label {
+    cursor: pointer;
+}
+
+.ingredients-checkbox input {
+    display: none;
+}
+
+.ingredients-checkbox input + label {
+    display: block;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.ingredients-checkbox input + label:last-child {
+    margin-bottom: 0;
+}
+
+.ingredients-checkbox input + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border: 0.1rem solid #f5af19;
+    opacity: 0.6;
+    transition: all 0.2s, border-color 0.1s;
+}
+
+.ingredients-checkbox input:checked + label:before {
+    width: 0.6rem;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+    transform: rotate(45deg);
+}
+
+.pizza-confirm {
+    display: none;
+}
