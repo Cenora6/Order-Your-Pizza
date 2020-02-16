@@ -123,6 +123,9 @@ $(function () {
     const typeButtons = $('.pizza-type button');
     const ingredientsButtons = $('.pizza-ingredients button');
     const confirmButtons = $('.pizza-confirm button');
+    const errorSpanCrust = pizzaCrustStep.find('.error');
+    const errorSpanType = pizzaTypeStep.find('.error');
+    const errorSpanIngredients = pizzaIngredientsStep.find('.error');
 
     let pizzaSizeValue;
     let pizzaCrustValue;
@@ -131,8 +134,8 @@ $(function () {
     let pizzaIngredientsValue = [];
 
     sizeButtons.on('click', function () {
-        pizzaSizeValue = $('input[name="size"]:checked').val();
 
+        pizzaSizeValue = $('input[name="size"]:checked').val();
         pizzaSizeStep.fadeOut(100);
         pizzaCrustStep.fadeIn(2000);
         setTimeout(
@@ -152,13 +155,22 @@ $(function () {
                 }), 600)
         } else {
             pizzaCrustValue = $('input[name="crust"]:checked').val();
-            pizzaCrustStep.fadeOut(100);
-            pizzaTypeStep.fadeIn(2000);
-            setTimeout(
-                pizzaTypeStep.css({
+            if(pizzaCrustValue === undefined) {
+                errorSpanCrust.fadeIn(1000);
+                errorSpanCrust.css({
                     display: "flex",
-                    alignItems: "center",
-                }), 600)
+                });
+                errorSpanCrust.text("You need to choose the pizza's crust!");
+                errorSpanCrust.delay(3000).fadeOut(1000)
+            } else {
+                pizzaCrustStep.fadeOut(100);
+                pizzaTypeStep.fadeIn(2000);
+                setTimeout(
+                    pizzaTypeStep.css({
+                        display: "flex",
+                        alignItems: "center",
+                    }), 600);
+            }
         }
     });
 
@@ -174,14 +186,23 @@ $(function () {
         } else {
             const pizzaType = $('input[name="type"]:checked');
             pizzaTypeValue = pizzaType.val();
-            pizzaTypeImage = pizzaType.attr('id');
-            pizzaTypeStep.fadeOut(100);
-            pizzaIngredientsStep.fadeIn(2000);
-            setTimeout(
-                pizzaIngredientsStep.css({
+            if(pizzaTypeValue === undefined) {
+                errorSpanType.fadeIn(1000);
+                errorSpanType.css({
                     display: "flex",
-                    alignItems: "center",
-                }), 600)
+                });
+                errorSpanType.text("You need to choose the pizza's type!");
+                errorSpanType.delay(3000).fadeOut(1000)
+            } else {
+                pizzaTypeImage = pizzaType.attr('id');
+                pizzaTypeStep.fadeOut(100);
+                pizzaIngredientsStep.fadeIn(2000);
+                setTimeout(
+                    pizzaIngredientsStep.css({
+                        display: "flex",
+                        alignItems: "center",
+                    }), 600)
+            }
         }
     });
 

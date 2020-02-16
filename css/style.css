@@ -215,6 +215,7 @@ h2 {
 
 .pizza-size {
     margin: 0 10rem;
+    position: relative;
 }
 
 .btn-next {
@@ -305,6 +306,7 @@ h2 {
 
 .pizza-crust {
     display: none;
+    position: relative;
 }
 
 .pizza-crust .single {
@@ -351,6 +353,7 @@ label[for=cheeseFilled] {
 
 .pizza-type {
     display: none;
+    position: relative;
 }
 
 .type-radio {
@@ -444,6 +447,7 @@ label[for=cheeseFilled] {
 
 .pizza-ingredients {
     display: none;
+    position: relative;
 }
 
 .ingredients-checkbox {
@@ -597,6 +601,22 @@ label[for=cheeseFilled] {
     display: flex;
     flex-direction: column;
     width: 70%;
+}
+
+.error {
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: #ff695f26;
+    width: 20rem;
+    height: 4rem;
+    top: 5rem;
+    border-radius: 2rem;
+    border: 0.1rem solid #ff695f63;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
 ::-webkit-scrollbar {
