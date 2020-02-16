@@ -73,8 +73,8 @@ $(function () {
             filter: "grayscale(100%)",
         });
         $(this).css({
-                filter: "grayscale(0%)",
-            })
+            filter: "grayscale(0%)",
+        })
     });
 
     const pizzaType = $('.pizza-type label');
@@ -93,19 +93,22 @@ $(function () {
     });
 
     const quantityNumber = $('.quantity span');
+    let number = $('.quantity span').text();
     const plus = $('.fa-plus-circle');
     const minus = $('.fa-minus-circle');
 
     plus.on('click', function () {
-        $(this).css({
-            transform: "rotate(180deg)",
-        })
+        $(this).toggleClass("rotate");
+        number = $('.quantity span').text();
+        quantityNumber.text(parseInt(number) + 1);
     });
 
     minus.on('click', function () {
-        $(this).css({
-            transform: "rotate(180deg)",
-        })
+        $(this).toggleClass("rotate");
+        number = $('.quantity span').text();
+        if(number > 0) {
+            quantityNumber.text(parseInt(number) - 1);
+        }
     });
 
     const pizzaSizeStep = $('.pizza-size');
@@ -120,7 +123,15 @@ $(function () {
     const ingredientsButtons = $('.pizza-ingredients button');
     const confirmButtons = $('.pizza-confirm button');
 
+    let pizzaSizeValue;
+    let pizzaCrustValue;
+    let pizzaTypeValue;
+    let pizzaTypeImage;
+    let pizzaIngredientsValue = [];
+
     sizeButtons.on('click', function () {
+        pizzaSizeValue = $('input[name="size"]:checked').val();
+
         pizzaSizeStep.fadeOut(100);
         pizzaCrustStep.fadeIn(2000);
         setTimeout(
@@ -139,6 +150,7 @@ $(function () {
                     display: "flex",
                 }), 600)
         } else {
+            pizzaCrustValue = $('input[name="crust"]:checked').val();
             pizzaCrustStep.fadeOut(100);
             pizzaTypeStep.fadeIn(2000);
             setTimeout(
@@ -159,6 +171,9 @@ $(function () {
                     alignItems: "center",
                 }), 600)
         } else {
+            const pizzaType = $('input[name="type"]:checked');
+            pizzaTypeValue = pizzaType.val();
+            pizzaTypeImage = pizzaType.attr('id');
             pizzaTypeStep.fadeOut(100);
             pizzaIngredientsStep.fadeIn(2000);
             setTimeout(
@@ -170,6 +185,7 @@ $(function () {
     });
 
     ingredientsButtons.on('click', function () {
+
         if($(this).text() === "Previous") {
             pizzaIngredientsStep.fadeOut(100);
             pizzaTypeStep.fadeIn(2000);
@@ -179,14 +195,110 @@ $(function () {
                     alignItems: "center",
                 }), 600)
         } else {
+            const ingredients = $('input[name="ingredients"]:checked');
+            ingredients.each(function () {
+                pizzaIngredientsValue.push($(this).val())
+            });
+
             pizzaIngredientsStep.fadeOut(100);
             pizzaConfirmStep.fadeIn(2000);
             setTimeout(
                 pizzaConfirmStep.css({
                     display: "flex",
                     alignItems: "center",
-                }), 600)
+                }), 600);
+
+
+            console.log(pizzaSizeValue);
+            console.log(pizzaCrustValue);
+            console.log(pizzaTypeValue);
+            console.log(pizzaTypeImage);
+            console.log(pizzaIngredientsValue);
+
+            addPizza();
         }
     });
+
+    confirmButtons.on('click', function () {
+        if($(this).text() === "Previous") {
+            pizzaConfirmStep.fadeOut(100);
+            pizzaIngredientsStep.fadeIn(2000);
+            setTimeout(
+                pizzaIngredientsStep.css({
+                    display: "flex",
+                    alignItems: "center",
+                }), 600)
+        } else {
+
+        }
+        // else {
+        //     confirmButtons.fadeOut(100);
+        //     pizzaConfirmStep.fadeIn(2000);
+        //     setTimeout(
+        //         pizzaConfirmStep.css({
+        //             display: "flex",
+        //             alignItems: "center",
+        //         }), 600)
+        // }
+    });
+
+    function addPizza () {
+
+        const confirm = $('.confirm');
+        const newSingle = $('<div class="single">');
+
+        const pizzaPhoto = $('<img alt="pizza">');
+        pizzaPhoto.attr('src', 'images/' + pizzaTypeImage + '.png');
+
+        const descriptionDiv = $('<div class="description">');
+
+        const pizzaTypeConfirm = $('<h3>');
+        pizzaTypeConfirm.text(pizzaTypeValue);
+
+        const extraIngredientsConfirm = $('<p>');
+        extraIngredientsConfirm.text('Extra ingredients: ' + pizzaIngredientsValue.join(", "));
+
+        const pizzaSizeConfirm = $('<span class="size-confirmation">');
+        pizzaSizeConfirm.text('Size: ' + pizzaSizeValue);
+
+        const pizzaCrustConfirm = $('<span class="crust-confirmation">');
+        pizzaCrustConfirm.text('Crust: ' + pizzaCrustValue);
+
+        const quantityDiv = $('<div class="quantity">');
+        const minusButton = $('<i class="fas fa-minus-circle">');
+        const pizzaQuantity = $('<span>');
+        pizzaQuantity.text('1');
+        const plusButton = $('<i class="fas fa-plus-circle">');
+
+        quantityDiv.append(minusButton);
+        quantityDiv.append(pizzaQuantity);
+        quantityDiv.append(plusButton);
+
+        descriptionDiv.append(pizzaTypeConfirm);
+        descriptionDiv.append(extraIngredientsConfirm);
+        descriptionDiv.append(pizzaSizeConfirm);
+        descriptionDiv.append(pizzaCrustConfirm);
+        descriptionDiv.append(quantityDiv);
+
+        newSingle.append(pizzaPhoto);
+        newSingle.append(descriptionDiv);
+
+        confirm.append(newSingle);
+    }
+
+
+    //<div class="single">
+    //                         <img src="images/pepperoni.png" alt="pizza"/>
+    //                         <div class="description">
+    //                             <h3>Pepperoni</h3>
+    //                             <p>Extra ingredients: tomato, egg, cheese</p>
+    //                             <span class="size-confirmation">Size: Large</span>
+    //                             <div class="quantity">
+    //                                 <i class="fas fa-minus-circle"></i>
+    //                                 <span>1</span>
+    //                                 <i class="fas fa-plus-circle"></i>
+    //                             </div>
+    //                         </div>
+    //                     </div>
 
 });

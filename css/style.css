@@ -534,10 +534,14 @@ label[for=cheeseFilled] {
 
 .confirm .single h3 {
     z-index: 20;
-    margin: 1rem;
+    margin: 1rem 0 0 1rem;
     font-size: 2.5rem;
     font-family: 'Sacramento', cursive;
     font-weight: 300;
+}
+
+.confirm .single h3::first-letter {
+    text-transform: uppercase;
 }
 
 .confirm .single p {
@@ -545,7 +549,6 @@ label[for=cheeseFilled] {
     margin: 1rem;
     font-size: 0.8rem;
     position: relative;
-    bottom: 2rem;
 }
 
 .confirm .single p::after {
@@ -562,21 +565,32 @@ label[for=cheeseFilled] {
 
 .confirm .single .size-confirmation {
     z-index: 20;
-    margin: 1rem;
-    position: relative;
-    bottom: 3rem;
+    margin: 0 1rem;
     font-size: 0.8rem;
 }
 
-.confirm .quantity {
+.confirm .single .crust-confirmation {
+    z-index: 20;
     margin: 0 1rem;
-    position: relative;
-    bottom: 3rem;
+    font-size: 0.8rem;
+}
+
+.crust-confirmation:first-letter, .size-confirmation:first-letter, .confirm .single p:first-letter {
+    text-transform: uppercase;
+}
+
+.confirm .quantity {
+    margin: 0.5rem 1rem;
 }
 
 .confirm .quantity i {
     margin: 0 0.5rem;
     transition: 2s;
+    cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(180deg);
 }
 
 .confirm .description {
