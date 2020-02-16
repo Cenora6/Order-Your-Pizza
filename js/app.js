@@ -141,7 +141,6 @@ $(function () {
         setTimeout(
             pizzaCrustStep.css({
                 display: "flex",
-                alignItems: "center",
             }), 600)
     });
 
@@ -168,7 +167,6 @@ $(function () {
                 setTimeout(
                     pizzaTypeStep.css({
                         display: "flex",
-                        alignItems: "center",
                     }), 600);
             }
         }
@@ -181,7 +179,6 @@ $(function () {
             setTimeout(
                 pizzaCrustStep.css({
                     display: "flex",
-                    alignItems: "center",
                 }), 600)
         } else {
             const pizzaType = $('input[name="type"]:checked');
@@ -200,7 +197,6 @@ $(function () {
                 setTimeout(
                     pizzaIngredientsStep.css({
                         display: "flex",
-                        alignItems: "center",
                     }), 600)
             }
         }
@@ -214,7 +210,6 @@ $(function () {
             setTimeout(
                 pizzaTypeStep.css({
                     display: "flex",
-                    alignItems: "center",
                 }), 600)
         } else {
             pizzaIngredientsValue = [];
@@ -228,7 +223,6 @@ $(function () {
             setTimeout(
                 pizzaConfirmStep.css({
                     display: "flex",
-                    alignItems: "center",
                 }), 600);
 
             addPizza();
@@ -244,7 +238,6 @@ $(function () {
             setTimeout(
                 pizzaIngredientsStep.css({
                     display: "flex",
-                    alignItems: "center",
                 }), 600)
         } else {
 
@@ -275,7 +268,11 @@ $(function () {
         pizzaTypeConfirm.text(pizzaTypeValue);
 
         const extraIngredientsConfirm = $('<p>');
-        extraIngredientsConfirm.text('Extra ingredients: ' + pizzaIngredientsValue.join(", "));
+        if(pizzaIngredientsValue.length === 0) {
+            extraIngredientsConfirm.text('Extra ingredients: - ');
+        } else {
+            extraIngredientsConfirm.text('Extra ingredients: ' + pizzaIngredientsValue.join(", "));
+        }
 
         const pizzaSizeConfirm = $('<span class="size-confirmation">');
         pizzaSizeConfirm.text('Size: ' + pizzaSizeValue);

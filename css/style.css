@@ -44,9 +44,51 @@ body::after {
 
 .container {
     z-index: 100;
+    display: flex;
+}
+
+.header {
+    width: 55%;
+}
+
+.header img {
+    position: absolute;
+    left: 0;
+    top: -15%;
+    opacity: 0.7;
+}
+
+.header h1 {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    font-family: 'Sacramento', cursive;
+    transform: rotate(-40deg);
+    font-size: 8rem;
+    color: #f5af19;
+    font-weight: 400;
+    text-shadow:
+            0 -1px 0 #fff,
+            0 1px 0 #2e2e2e,
+            0 2px 0 #2c2c2c,
+            0 3px 0 #2a2a2a,
+            0 4px 0 #282828,
+            0 5px 0 #262626,
+            0 6px 0 #242424,
+            0 7px 0 #222,
+            0 8px 0 #202020,
+            0 9px 0 #1e1e1e,
+            0 10px 0 #1c1c1c,
+            0 11px 0 #1a1a1a,
+            0 12px 0 #181818,
+            0 13px 0 #161616,
+            0 14px 0 #141414,
+            0 15px 0 #121212,
+            0 22px 30px rgba(0, 0, 0, 0.9);
 }
 
 .panel {
+    width: 45%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -78,54 +120,19 @@ body::after {
     background: #FFF;
 }
 
-.header img {
-    position: absolute;
-    left: 0;
-    top: -15%;
-    opacity: 0.7;
-}
-
-.header h1 {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    font-family: 'Sacramento', cursive;
-    transform: rotate(-40deg);
-    font-size: 8rem;
-    color: #f5af19;
-
-    font-weight: 400;
-    text-shadow:
-            0 -1px 0 #fff,
-            0 1px 0 #2e2e2e,
-            0 2px 0 #2c2c2c,
-            0 3px 0 #2a2a2a,
-            0 4px 0 #282828,
-            0 5px 0 #262626,
-            0 6px 0 #242424,
-            0 7px 0 #222,
-            0 8px 0 #202020,
-            0 9px 0 #1e1e1e,
-            0 10px 0 #1c1c1c,
-            0 11px 0 #1a1a1a,
-            0 12px 0 #181818,
-            0 13px 0 #161616,
-            0 14px 0 #141414,
-            0 15px 0 #121212,
-            0 22px 30px rgba(0, 0, 0, 0.9);
-}
-
 .main-panel {
-    width: 40%;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 90%;
 }
 
 h2 {
+    text-align: center;
     font-size: 4rem;
     margin-bottom: 5rem;
     color: white;
@@ -214,20 +221,19 @@ h2 {
 }
 
 .pizza-size {
-    margin: 0 10rem;
     position: relative;
 }
 
 .btn-next {
     position: absolute;
     bottom: 3rem;
-    right: 3rem;
+    right: 0;
 }
 
 .btn-prev {
     position: absolute;
     bottom: 3rem;
-    right: 40rem;
+    left: 0;
 }
 
 .btn-next button, .btn-prev button {
@@ -454,7 +460,7 @@ label[for=cheeseFilled] {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 80%;
+    margin: 0 auto;
 }
 
 .ingredients-checkbox .single {
@@ -507,7 +513,7 @@ label[for=cheeseFilled] {
 
 .pizza-confirm {
     display: none;
-    margin: 0 1rem;
+    position: relative;
 }
 
 .confirm-form {
@@ -524,9 +530,9 @@ label[for=cheeseFilled] {
     justify-content: space-between;
     border-radius: 2rem;
     z-index: 1;
-    width: 42.5rem;
+    width: 95%;
     text-shadow: 1px 1px 0 #000;
-    margin: 2rem 0;
+    margin: 1rem;
 }
 
 .confirm .single img {
@@ -611,7 +617,7 @@ label[for=cheeseFilled] {
     background: #ff695f26;
     width: 20rem;
     height: 4rem;
-    top: 5rem;
+    top: 1rem;
     border-radius: 2rem;
     border: 0.1rem solid #ff695f63;
     color: white;
