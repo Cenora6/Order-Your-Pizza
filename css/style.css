@@ -546,9 +546,9 @@ label[for=cheeseFilled] {
 
 .confirm .single p {
     z-index: 20;
-    margin: 1rem;
     font-size: 0.8rem;
     position: relative;
+    margin: 0 0 1rem 1rem;
 }
 
 .confirm .single p::after {
@@ -571,8 +571,8 @@ label[for=cheeseFilled] {
 
 .confirm .single .crust-confirmation {
     z-index: 20;
-    margin: 0 1rem;
     font-size: 0.8rem;
+    margin: 0 0 1rem 1rem;
 }
 
 .crust-confirmation:first-letter, .size-confirmation:first-letter, .confirm .single p:first-letter {
