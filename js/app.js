@@ -5,7 +5,7 @@ $(function () {
     const small = sizeForm.find('input#small');
     const medium = sizeForm.find('input#medium');
     const large = sizeForm.find('input#large');
-    const extraLarge = sizeForm.find('input#extra');
+    const extraLarge = sizeForm.find('[id="extra large"]');
     const image = sizeForm.find('img');
 
     sizeChoose.css({
@@ -84,7 +84,6 @@ $(function () {
 
     pizzaType.on('mouseout', function () {
         $(this).removeClass('hover');
-
     });
 
     pizzaType.on('click change', function () {
@@ -240,9 +239,13 @@ $(function () {
                 ingredientsPrice.push($(this).val());
             });
 
-            pizzaIngredientsPrice = ingredientsPrice.reduce(function (a, b) {
-                return parseInt(a, 10) + parseInt(b, 10);
-            });
+            if(pizzaIngredientsValue.length > 0) {
+                pizzaIngredientsPrice = ingredientsPrice.reduce(function (a, b) {
+                    return parseInt(a, 10) + parseInt(b, 10);
+                });
+            } else {
+                pizzaIngredientsPrice = "0"
+            }
 
             pizzaIngredientsStep.fadeOut(100);
             pizzaConfirmStep.fadeIn(2000);

@@ -514,6 +514,7 @@ label[for=cheeseFilled] {
 .ingredients-price {
     width: 20%;
     font-size: 0.8rem;
+    padding: 0 0.5rem;
 }
 
 .pizza-confirm {
@@ -570,6 +571,7 @@ label[for=cheeseFilled] {
     z-index: 20;
     font-size: 0.8rem;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 .confirm .line {
@@ -589,13 +591,15 @@ label[for=cheeseFilled] {
 }
 
 .confirm .size-price {
-    width: 20%;
     font-size: 0.8rem;
+    padding: 0 0.5rem;
+    width: 20%;
 }
 
 .confirm .single .size-confirmation {
     z-index: 20;
     font-size: 0.8rem;
+    width: 80%;
 }
 
 .confirm .single .crust-confirmation {
