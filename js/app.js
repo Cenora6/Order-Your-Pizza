@@ -67,8 +67,8 @@ $(function () {
         });
     });
 
-    const crustLabel = $('.crust label');
-    crustLabel.on('click', function (e) {
+    const crustLabel = $(".crust label");
+    crustLabel.on('click', function () {
         crustLabel.css({
             filter: "grayscale(100%)",
         });
@@ -77,7 +77,7 @@ $(function () {
         })
     });
 
-    const pizzaType = $('.pizza-type label');
+    const pizzaType = $(".pizza-type label");
     pizzaType.on('mouseover', function () {
         $(this).addClass('hover');
     });
@@ -97,17 +97,21 @@ $(function () {
     confirm.on('click', $('i'), function (e) {
         const quantityButton = $(e.target);
         const quantityNumber = $(e.target).parent().find('span');
-        let number = quantityNumber.text();
+        const number = quantityNumber.text();
         const className = quantityButton.attr('class');
+        const total = $(e.target).parent().parent().find('.total-price');
+        const basicPrice = parseInt(pizzaSizePrice) + parseInt(pizzaIngredientsPrice) + ' €';
 
         if (className === 'fas fa-plus-circle' || className === 'fas fa-plus-circle rotate') {
             quantityButton.toggleClass("rotate");
             quantityNumber.text(parseInt(number) + 1);
+            total.text('Total: ' + parseInt(basicPrice) * (parseInt(number) + 1) + ' €')
 
         } else if (className === 'fas fa-minus-circle' || className === 'fas fa-minus-circle rotate') {
             quantityButton.toggleClass("rotate");
             if(number > 0) {
                 quantityNumber.text(parseInt(number) - 1);
+                total.text('Total: ' + parseInt(basicPrice) * (parseInt(number) - 1) + ' €')
             }
         }
     });
@@ -125,33 +129,60 @@ $(function () {
     const confirmButtons = $('.pizza-confirm button');
     const errorSpanCrust = pizzaCrustStep.find('.error');
     const errorSpanType = pizzaTypeStep.find('.error');
-    const errorSpanIngredients = pizzaIngredientsStep.find('.error');
 
     let pizzaSizeValue;
+    let pizzaSizePrice;
+
     let pizzaCrustValue;
     let pizzaTypeValue;
     let pizzaTypeImage;
+
     let pizzaIngredientsValue = [];
+    let pizzaIngredientsPrice;
+
+    function showSizeStep () {
+        pizzaSizeStep.css({
+            display: "flex",
+        })
+    }
+
+    function showCrustStep () {
+        pizzaCrustStep.css({
+            display: "flex",
+        })
+    }
+
+    function showTypeStep () {
+        pizzaTypeStep.css({
+            display: "flex",
+        })
+    }
+
+    function showIngredientsStep () {
+        pizzaIngredientsStep.css({
+            display: "flex",
+        })
+    }
+
+    function showConfirmStep () {
+        pizzaConfirmStep.css({
+            display: "flex",
+        })
+    }
 
     sizeButtons.on('click', function () {
-
-        pizzaSizeValue = $('input[name="size"]:checked').val();
+        pizzaSizePrice = $('input[name="size"]:checked').val();
+        pizzaSizeValue = $('input[name="size"]:checked').attr('id');
         pizzaSizeStep.fadeOut(100);
         pizzaCrustStep.fadeIn(2000);
-        setTimeout(
-            pizzaCrustStep.css({
-                display: "flex",
-            }), 600)
+        showCrustStep();
     });
 
     crustButtons.on('click', function () {
         if($(this).text() === "Previous") {
             pizzaCrustStep.fadeOut(100);
             pizzaSizeStep.fadeIn(2000);
-            setTimeout(
-                pizzaSizeStep.css({
-                    display: "flex",
-                }), 600)
+            showSizeStep();
         } else {
             pizzaCrustValue = $('input[name="crust"]:checked').val();
             if(pizzaCrustValue === undefined) {
@@ -164,10 +195,7 @@ $(function () {
             } else {
                 pizzaCrustStep.fadeOut(100);
                 pizzaTypeStep.fadeIn(2000);
-                setTimeout(
-                    pizzaTypeStep.css({
-                        display: "flex",
-                    }), 600);
+                showTypeStep();
             }
         }
     });
@@ -176,10 +204,7 @@ $(function () {
         if($(this).text() === "Previous") {
             pizzaTypeStep.fadeOut(100);
             pizzaCrustStep.fadeIn(2000);
-            setTimeout(
-                pizzaCrustStep.css({
-                    display: "flex",
-                }), 600)
+            showCrustStep();
         } else {
             const pizzaType = $('input[name="type"]:checked');
             pizzaTypeValue = pizzaType.val();
@@ -194,10 +219,7 @@ $(function () {
                 pizzaTypeImage = pizzaType.attr('id');
                 pizzaTypeStep.fadeOut(100);
                 pizzaIngredientsStep.fadeIn(2000);
-                setTimeout(
-                    pizzaIngredientsStep.css({
-                        display: "flex",
-                    }), 600)
+                showIngredientsStep();
             }
         }
     });
@@ -207,24 +229,24 @@ $(function () {
         if($(this).text() === "Previous") {
             pizzaIngredientsStep.fadeOut(100);
             pizzaTypeStep.fadeIn(2000);
-            setTimeout(
-                pizzaTypeStep.css({
-                    display: "flex",
-                }), 600)
+            showTypeStep();
         } else {
             pizzaIngredientsValue = [];
+            let ingredientsPrice = [];
+
             const ingredients = $('input[name="ingredients"]:checked');
             ingredients.each(function () {
-                pizzaIngredientsValue.push($(this).val())
+                pizzaIngredientsValue.push($(this).attr('id'));
+                ingredientsPrice.push($(this).val());
+            });
+
+            pizzaIngredientsPrice = ingredientsPrice.reduce(function (a, b) {
+                return parseInt(a, 10) + parseInt(b, 10);
             });
 
             pizzaIngredientsStep.fadeOut(100);
             pizzaConfirmStep.fadeIn(2000);
-            setTimeout(
-                pizzaConfirmStep.css({
-                    display: "flex",
-                }), 600);
-
+            showConfirmStep();
             addPizza();
         }
     });
@@ -235,10 +257,7 @@ $(function () {
 
             pizzaConfirmStep.fadeOut(100);
             pizzaIngredientsStep.fadeIn(2000);
-            setTimeout(
-                pizzaIngredientsStep.css({
-                    display: "flex",
-                }), 600)
+            showIngredientsStep();
         } else {
 
         }
@@ -253,9 +272,18 @@ $(function () {
         // }
     });
 
-
     function addPizza () {
-        const confirm = $('.confirm');
+
+        const pizza = {
+            size: pizzaSizeValue,
+            crust: pizzaCrustValue,
+            type: pizzaTypeValue,
+            ingredients: pizzaIngredientsValue,
+        };
+
+        let pizzas = [];
+        pizzas.push(pizza);
+        sessionStorage.setItem("pizza", JSON.stringify(pizzas));
 
         const newSingle = $('<div class="single">');
 
@@ -267,6 +295,10 @@ $(function () {
         const pizzaTypeConfirm = $('<h3>');
         pizzaTypeConfirm.text(pizzaTypeValue);
 
+        const ingredients = $('<div class="ingredients">');
+        const ingredientsPrice = $('<span class="ingredients-price">');
+        ingredientsPrice.text(pizzaIngredientsPrice + ' €');
+
         const extraIngredientsConfirm = $('<p>');
         if(pizzaIngredientsValue.length === 0) {
             extraIngredientsConfirm.text('Extra ingredients: - ');
@@ -274,11 +306,29 @@ $(function () {
             extraIngredientsConfirm.text('Extra ingredients: ' + pizzaIngredientsValue.join(", "));
         }
 
+        ingredients.append(extraIngredientsConfirm);
+        ingredients.append(ingredientsPrice);
+
+        const line = $('<div class="line">');
+
+        const pizzaSize = $('<div class="pizza-size-confirmation">');
+
         const pizzaSizeConfirm = $('<span class="size-confirmation">');
         pizzaSizeConfirm.text('Size: ' + pizzaSizeValue);
 
+        const sizePrice = $('<span class="size-price">');
+        sizePrice.text(pizzaSizePrice + ' €');
+
+        pizzaSize.append(pizzaSizeConfirm);
+        pizzaSize.append(sizePrice);
+
         const pizzaCrustConfirm = $('<span class="crust-confirmation">');
         pizzaCrustConfirm.text('Crust: ' + pizzaCrustValue);
+
+        const summary = $('<div class="summary">');
+        const totalPrice = $('<span class="total-price">');
+        const sum = parseInt(pizzaSizePrice) + parseInt(pizzaIngredientsPrice);
+        totalPrice.text('Total: ' + sum + ' €');
 
         const quantityDiv = $('<div class="quantity">');
         const minusButton = $('<i class="fas fa-minus-circle">');
@@ -290,11 +340,15 @@ $(function () {
         quantityDiv.append(pizzaQuantity);
         quantityDiv.append(plusButton);
 
+        summary.append(quantityDiv);
+        summary.append(totalPrice);
+
         descriptionDiv.append(pizzaTypeConfirm);
-        descriptionDiv.append(extraIngredientsConfirm);
-        descriptionDiv.append(pizzaSizeConfirm);
+        descriptionDiv.append(ingredients);
+        descriptionDiv.append(line);
+        descriptionDiv.append(pizzaSize);
         descriptionDiv.append(pizzaCrustConfirm);
-        descriptionDiv.append(quantityDiv);
+        descriptionDiv.append(summary);
 
         newSingle.append(pizzaPhoto);
         newSingle.append(descriptionDiv);
