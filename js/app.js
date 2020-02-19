@@ -1,5 +1,6 @@
 $(function () {
 
+    let cart = JSON.parse(sessionStorage.getItem("pizza"));
     const sizeForm = $('.size');
     const sizeChoose = sizeForm.find('.choose');
     const small = sizeForm.find('input#small');
@@ -261,7 +262,7 @@ $(function () {
             const pizzaCrust = pizzaCrustValue;
             const pizzaTotal = (parseInt(pizzaSizePrice) + parseInt(pizzaIngredientsPrice)) * pizzaQuantity;
 
-            let cart = JSON.parse(sessionStorage.getItem("pizza"));
+            cart = JSON.parse(sessionStorage.getItem("pizza"));
             const pizza = {
                 type: pizzaType,
                 size: pizzaSize,
@@ -425,16 +426,14 @@ $(function () {
 
 
     function showCart() {
-        console.log(localStorage.getItem("pizza"));
         const pizzaCart = $('.pizza-cart');
+        const pricePizza = $('.total-price');
         pizzaCart.empty();
-
-        const allPizza = JSON.parse(sessionStorage.getItem("pizza"));
-        console.log(allPizza);
+        pricePizza.remove();
 
         let totalPrice = [];
         let price;
-        for (let i = 0; i < allPizza.length; i++) {
+        for (let i = 0; i < cart.length; i++) {
 
             const pizzaList = $('<li></li>');
             const pizzaName = $('<h3>');
@@ -443,14 +442,15 @@ $(function () {
             const pizzaDetails = $('<div class="pizza-details">');
             const deletePizza = $('<button class="delete">');
 
-            totalPrice = [...totalPrice, allPizza[i].price];
+            totalPrice = [...totalPrice, cart[i].price];
+            console.log(totalPrice);
             price = totalPrice.reduce(function (a, b) {
                 return parseInt(a, 10) + parseInt(b, 10);
             });
 
-            pizzaName.text(allPizza[i].quantity + " x " + allPizza[i].type);
-            pizzaIngredients.text("Ingredients: " + allPizza[i].ingredients.join(', '));
-            pizzaCrust.text("Crust: " + allPizza[i].crust);
+            pizzaName.text(cart[i].quantity + " x " + cart[i].type);
+            pizzaIngredients.text("Ingredients: " + cart[i].ingredients.join(', '));
+            pizzaCrust.text("Crust: " + cart[i].crust);
 
             const buttonText = $('<span>');
             buttonText.text("Delete");
@@ -465,9 +465,15 @@ $(function () {
             pizzaCart.append(pizzaList);
 
         }
+
         const priceDiv = $('<div class="total-price">');
         const pizzaPrice = $('<h4>');
-        pizzaPrice.text("Total: " + price + " €");
+
+        if (price === undefined) {
+            pizzaPrice.text("Total: " + 0 + " €");
+        } else {
+            pizzaPrice.text("Total: " + price + " €");
+        }
 
         priceDiv.append(pizzaPrice);
         cartStep.append(priceDiv);
@@ -475,16 +481,22 @@ $(function () {
 
     const deleteButton = $('.delete');
     cartStep.on('click', deleteButton, function (e) {
+
+        let index;
         if($(e.target).parent().prop('tagName') === "LI") {
-            $(e.target).parent().remove();
+            index = $(e.target).parent().index();
         } else {
-            $(e.target).parent().parent().remove();
+            index = $(e.target).parent().parent().index();
         }
+
+        cart.splice(index);
+        sessionStorage.setItem("pizza", JSON.stringify(cart));
+        showCart();
     });
 
 
-    const btnCancel = $('.btn-cancel');
-    const btnConfirm = $('.btn-confirm');
+    const btnCancel = $('.cancel-btn');
+    const btnConfirm = $('.confirm-btn');
 
     btnCancel.on('click', function () {
         confirm.empty();

@@ -747,9 +747,19 @@ label[for=cheeseFilled] {
     color: #FFF;
 }
 
-.pizza-cart .total-price {
+.cart-panel .total-price {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.cart-panel .total-price h4 {
+    position: relative;
+    bottom: 5rem;
+    color: #FFF;
+    text-shadow: 2px 2px 2px #000;
+    font-size: 1.5rem;
 }
 
 .pizza-cart h3 {
@@ -792,6 +802,22 @@ writing-mode: vertical-rl;
 
 .pizza-cart .delete:hover {
     opacity: 0.5;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn .cancel-btn, .btn .confirm-btn {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    text-shadow: -2px 2px 0 #000;
+    font-family: 'Sacramento', cursive;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
