@@ -10,4 +10,4 @@
 - webpack
 
 ## Preview: 
-Check the preview [HERE](https://cenora6.github.io/To-Do-List/)
+Check the preview [HERE](https://cenora6.github.io/Order-Your-Pizza/)
