@@ -102,6 +102,7 @@ $(function () {
     const pizzaConfirmStep = $('.pizza-confirm');
     const windowPopOut = $('.window-popup');
     const cartStep = $('.cart-panel');
+    const finishStep = $('.end-popup');
 
     const sizeButtons = $('.pizza-size button');
     const crustButtons = $('.pizza-crust button');
@@ -296,6 +297,7 @@ $(function () {
                 pizzaTypeLabel.removeClass('chosen');
 
                 $('input:checked').prop('checked', false);
+                small.prop('checked', true);
             }
 
             clearForms();
@@ -421,44 +423,82 @@ $(function () {
         $('.confirm .single').remove();
     }
 
-    function showCart() {
-        const allPizzas = JSON.parse(sessionStorage.getItem("pizza"));
-        const pizzaCart = $('.pizza-cart');
 
-        for (let i = 0; i < allPizzas.length; i++) {
+    function showCart() {
+        console.log(localStorage.getItem("pizza"));
+        const pizzaCart = $('.pizza-cart');
+        pizzaCart.empty();
+
+        const allPizza = JSON.parse(sessionStorage.getItem("pizza"));
+        console.log(allPizza);
+
+        let totalPrice = [];
+        let price;
+        for (let i = 0; i < allPizza.length; i++) {
 
             const pizzaList = $('<li></li>');
             const pizzaName = $('<h3>');
             const pizzaIngredients = $('<p>');
             const pizzaCrust = $('<span>');
-            const pizzaPrice = $('<h4>');
+            const pizzaDetails = $('<div class="pizza-details">');
+            const deletePizza = $('<button class="delete">');
 
-            pizzaName.text(allPizzas[i].quantity + " x " + allPizzas[i].type);
-            pizzaIngredients.text("Ingredients:" + allPizzas[i].ingredients.join(', '));
-            pizzaCrust.text("Crust: " + allPizzas[i].crust);
-            pizzaPrice.text("Total: " + allPizzas[i].price + " €");
+            totalPrice = [...totalPrice, allPizza[i].price];
+            price = totalPrice.reduce(function (a, b) {
+                return parseInt(a, 10) + parseInt(b, 10);
+            });
+
+            pizzaName.text(allPizza[i].quantity + " x " + allPizza[i].type);
+            pizzaIngredients.text("Ingredients: " + allPizza[i].ingredients.join(', '));
+            pizzaCrust.text("Crust: " + allPizza[i].crust);
+
+            const buttonText = $('<span>');
+            buttonText.text("Delete");
+            deletePizza.append(buttonText);
+
+            pizzaDetails.append(pizzaIngredients);
+            pizzaDetails.append(pizzaCrust);
 
             pizzaList.append(pizzaName);
-            pizzaList.append(pizzaIngredients);
-            pizzaList.append(pizzaCrust);
-            pizzaList.append(pizzaPrice);
+            pizzaList.append(pizzaDetails);
+            pizzaList.append(deletePizza);
             pizzaCart.append(pizzaList);
+
         }
+        const priceDiv = $('<div class="total-price">');
+        const pizzaPrice = $('<h4>');
+        pizzaPrice.text("Total: " + price + " €");
+
+        priceDiv.append(pizzaPrice);
+        cartStep.append(priceDiv);
     }
 
+    const deleteButton = $('.delete');
+    cartStep.on('click', deleteButton, function (e) {
+        if($(e.target).parent().prop('tagName') === "LI") {
+            $(e.target).parent().remove();
+        } else {
+            $(e.target).parent().parent().remove();
+        }
+    });
 
-    //<div class="single">
-    //                         <img src="images/pepperoni.png" alt="pizza"/>
-    //                         <div class="description">
-    //                             <h3>Pepperoni</h3>
-    //                             <p>Extra ingredients: tomato, egg, cheese</p>
-    //                             <span class="size-confirmation">Size: Large</span>
-    //                             <div class="quantity">
-    //                                 <i class="fas fa-minus-circle"></i>
-    //                                 <span>1</span>
-    //                                 <i class="fas fa-plus-circle"></i>
-    //                             </div>
-    //                         </div>
-    //                     </div>
 
+    const btnCancel = $('.btn-cancel');
+    const btnConfirm = $('.btn-confirm');
+
+    btnCancel.on('click', function () {
+        confirm.empty();
+        $('.pizza-cart').empty();
+        sessionStorage.clear();
+        pizzaCrustStep.fadeOut(100);
+        pizzaSizeStep.fadeIn(2000);
+        showSizeStep();
+    });
+
+    btnConfirm.on('click', function () {
+        confirm.empty();
+        $('.pizza-cart').empty();
+        sessionStorage.clear();
+        finishStep.fadeIn(2000);
+    });
 });

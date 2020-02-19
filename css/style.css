@@ -548,7 +548,7 @@ label[for=cheeseFilled] {
     padding: 1rem;
 }
 
-.confirm .single h3, .pizza-cart h3 {
+.confirm .single h3 {
     z-index: 20;
     margin: 1rem 0 0 1rem;
     font-size: 2.5rem;
@@ -556,7 +556,7 @@ label[for=cheeseFilled] {
     font-weight: 300;
 }
 
-.confirm .single h3::first-letter, .pizza-cart h3::first-letter {
+.confirm .single h3::first-letter {
     text-transform: uppercase;
 }
 
@@ -567,7 +567,7 @@ label[for=cheeseFilled] {
     margin: 0 1rem;
 }
 
-.confirm .single p, .pizza-cart p {
+.confirm .single p {
     z-index: 20;
     font-size: 0.8rem;
     flex-wrap: wrap;
@@ -709,6 +709,89 @@ label[for=cheeseFilled] {
 .cart-panel {
     display: none;
     position: relative;
+}
+
+.end-popup {
+    display: none;
+    position: absolute;
+    width: 30rem;
+    height: 20rem;
+    background: #ffffff57;
+    z-index: 100;
+    padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    border: 0.1rem solid black;
+    font-size: 0.8rem;
+    color: white;
+    text-shadow: 0.1rem 0.1rem 0.1rem black;
+}
+
+.pizza-cart {
+    width: 40rem;
+    height: 60%;
+    overflow: auto;
+}
+
+.pizza-cart li {
+    height: 6.5rem;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 0.1rem solid #FFF;
+    margin: 1rem 0;
+    color: #FFF;
+}
+
+.pizza-cart .total-price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pizza-cart h3 {
+    width: 50%;
+    z-index: 20;
+    font-size: 2.5rem;
+    font-family: 'Sacramento', cursive;
+    font-weight: 300;
+}
+
+.pizza-cart p, .pizza-cart span {
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+}
+
+.pizza-cart .pizza-details {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.pizza-cart .delete {
+    height: 6.5rem;
+    width: 2rem;
+    position: relative;
+    right: -1.9rem;
+    border-bottom-right-radius: 5rem;
+    border-top-right-radius: 5rem;
+    background: #d17a89;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    transition: .5s;
+}
+
+.pizza-cart .delete span {
+transform: rotate(-180deg);
+writing-mode: vertical-rl;
+}
+
+.pizza-cart .delete:hover {
+    opacity: 0.5;
 }
 
 ::-webkit-scrollbar {
