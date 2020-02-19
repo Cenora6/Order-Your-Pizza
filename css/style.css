@@ -17,8 +17,8 @@ body {
 body::before {
     content: "";
     position: absolute;
-    top: -20rem;
-    left: -50rem;
+    top: -30%;
+    left: -45%;
     bottom: 5rem;
     width: 100%;
     height: 100%;
@@ -31,10 +31,9 @@ body::before {
 body::after {
     content: "";
     position: absolute;
-    top: -40rem;
-    left: -50rem;
-    bottom: 5rem;
-    width: 100%;
+    top: -34rem;
+    left: -35rem;
+    width: 80rem;
     height: 100%;
     opacity: 0.1;
     z-index: -1;
@@ -324,6 +323,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .crust-radio label {
@@ -526,7 +526,7 @@ label[for=cheeseFilled] {
     width: 109%;
     height: 50%;
     padding: 1rem;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .confirm .single {
@@ -659,6 +659,7 @@ label[for=cheeseFilled] {
 }
 
 .window-popup {
+    display: none;
     position: absolute;
     width: 20rem;
     background: #ffffff57;
@@ -781,8 +782,8 @@ label[for=cheeseFilled] {
 }
 
 .pizza-cart .delete span {
-transform: rotate(-180deg);
-writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    writing-mode: vertical-rl;
 }
 
 .pizza-cart .delete:hover {
@@ -841,17 +842,111 @@ writing-mode: vertical-rl;
 }
 
 ::-webkit-scrollbar {
-width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-background: #888;
+    background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-background: #555;
+    background: #555;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+    html {
+        font-size: 6px;
+    }
+
+    body::before {
+        top: -80%;
+        left: -73%;
+    }
+
+    body::after {
+        top: -73%;
+        left: -71%;
+    }
+
+    .header img {
+        width: 35%;
+        top: -5%;
+    }
+
+    .header h1 {
+        top: 12%;
+        left: 0;
+        font-size: 6rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    .main-panel {
+        height: 70vh;
+    }
+
+    .panel {
+        width: 60%;
+        height: 100vh;
+    }
+
+    .panel::before {
+        width: 60%;
+    }
+
+    .size {
+        padding: 0;
+        margin-top: 15rem;
+    }
+
+    .size .radio {
+        transform: rotate(-90deg);
+    }
+
+    .error {
+        top: auto;
+        bottom: 20rem;
+    }
+
+    .type img {
+        width: 7rem;
+    }
+
+    .type-radio label.hover h3, .type-radio label.chosen h3 {
+        left: 1rem;
+        bottom: 6rem;
+        text-align: center;
+    }
+
+    .type-radio label.hover ul, .type-radio label.chosen ul {
+        left: -1rem;
+        bottom: 1rem;
+    }
+
+    .window-popup {
+        bottom: 25%;
+    }
+
+    .window-popup .btns button {
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .pizza-cart {
+        width: 100%;
+    }
+
+    .pizza-cart h3 {
+        font-size: 1.5rem;
+    }
+
 }

@@ -182,7 +182,7 @@ $(function () {
         } else {
             pizzaCrustValue = $('input[name="crust"]:checked').val();
             if(pizzaCrustValue === undefined) {
-                errorSpanCrust.fadeIn(1000);
+                errorSpanCrust.fadeIn(2000);
                 errorSpanCrust.css({
                     display: "flex",
                 });
@@ -205,7 +205,7 @@ $(function () {
             const pizzaType = $('input[name="type"]:checked');
             pizzaTypeValue = pizzaType.val();
             if(pizzaTypeValue === undefined) {
-                errorSpanType.fadeIn(1000);
+                errorSpanType.fadeIn(2000);
                 errorSpanType.css({
                     display: "flex",
                 });
@@ -259,7 +259,10 @@ $(function () {
             pizzaIngredientsStep.fadeIn(2000);
             showIngredientsStep();
         } else {
-            windowPopOut.animate({"right": '+=290'}, 1000);
+            windowPopOut.css({
+                display: "block",
+            });
+            windowPopOut.animate({"right": '+=18rem'}, 1000);
 
             const pizzaType = pizzaTypeValue;
             const pizzaSize = pizzaSizeValue;
@@ -322,6 +325,9 @@ $(function () {
             cartButton.on('click', function () {
                 windowPopOut.animate({"right": '-320'}, 1000);
                 pizzaConfirmStep.fadeOut(100);
+                windowPopOut.css({
+                    display: "none"
+                });
                 cartStep.fadeIn(2000);
                 showCartStep();
                 showCart();
@@ -504,7 +510,7 @@ $(function () {
         confirm.empty();
         $('.pizza-cart').empty();
         sessionStorage.clear();
-        pizzaCrustStep.fadeOut(100);
+        finishStep.fadeOut(100);
         pizzaSizeStep.fadeIn(2000);
         showSizeStep();
     });
@@ -539,7 +545,7 @@ $(function () {
         const dateOrder = $('.placed-on span');
         dateOrder.text(orderDate);
 
-        let start = "01:00";
+        let start = "50:00";
         const interval = setInterval(function() {
 
             const timer = start.split(':');
