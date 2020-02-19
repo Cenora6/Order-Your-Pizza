@@ -9,7 +9,7 @@ body {
     height: 100vh;
     position: relative;
     z-index: -1;
-    background: url("../images/background.jpg");
+    background: url("..../images/background.jpg");
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
 }
@@ -261,14 +261,14 @@ h2 {
 }
 
 .btn-next button:hover, .btn-next button:active {
-    background: url("/images/buttonNext.png") no-repeat;
+    background: url("../images/buttonNext.png") no-repeat;
     background-size: 5rem 100%;
     background-position-x: 3rem;
     opacity: 0;
 }
 
 .btn-prev button:hover, .btn-prev button:active {
-    background: url("/images/buttonPrev.png") no-repeat;
+    background: url("../images/buttonPrev.png") no-repeat;
     background-size: 5rem 100%;
     background-position-x: 3rem;
     opacity: 0;

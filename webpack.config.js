@@ -13,7 +13,7 @@ module.exports = (env) => {
       entry: "./js/app.js",
       output: {
           filename: "out.js",
-          path: path.resolve(__dirname)
+          path: path.resolve(__dirname, "build")
       },
       plugins: [
           new Html({
