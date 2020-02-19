@@ -1,6 +1,7 @@
 $(function () {
 
     let cart = JSON.parse(sessionStorage.getItem("pizza"));
+
     const sizeForm = $('.size');
     const sizeChoose = sizeForm.find('.choose');
     const small = sizeForm.find('input#small');
@@ -103,7 +104,7 @@ $(function () {
     const pizzaConfirmStep = $('.pizza-confirm');
     const windowPopOut = $('.window-popup');
     const cartStep = $('.cart-panel');
-    const finishStep = $('.end-popup');
+    const finishStep = $('.confirmation');
 
     const sizeButtons = $('.pizza-size button');
     const crustButtons = $('.pizza-crust button');
@@ -155,6 +156,12 @@ $(function () {
 
     function showCartStep () {
         cartStep.css({
+            display: "flex",
+        })
+    }
+
+    function showFinishStep () {
+        finishStep.css({
             display: "flex",
         })
     }
@@ -252,7 +259,6 @@ $(function () {
             pizzaIngredientsStep.fadeIn(2000);
             showIngredientsStep();
         } else {
-            console.log($('input:checked'))
             windowPopOut.animate({"right": '+=290'}, 1000);
 
             const pizzaType = pizzaTypeValue;
@@ -325,7 +331,6 @@ $(function () {
 
     confirm.on('click', $('i'), function (e) {
         const basicPrice = parseInt(pizzaSizePrice) + parseInt(pizzaIngredientsPrice);
-
         const quantityButton = $(e.target);
         const quantityNumber = $(e.target).parent().find('span');
         const number = quantityNumber.text();
@@ -417,24 +422,23 @@ $(function () {
         newSingle.append(descriptionDiv);
 
         confirm.append(newSingle);
-
     }
 
     function deletePizza() {
         $('.confirm .single').remove();
     }
 
-
     function showCart() {
         const pizzaCart = $('.pizza-cart');
         const pricePizza = $('.total-price');
         pizzaCart.empty();
         pricePizza.remove();
+        cart = JSON.parse(sessionStorage.getItem("pizza"));
 
         let totalPrice = [];
         let price;
-        for (let i = 0; i < cart.length; i++) {
 
+        for (let i = 0; i < cart.length; i++) {
             const pizzaList = $('<li></li>');
             const pizzaName = $('<h3>');
             const pizzaIngredients = $('<p>');
@@ -443,7 +447,6 @@ $(function () {
             const deletePizza = $('<button class="delete">');
 
             totalPrice = [...totalPrice, cart[i].price];
-            console.log(totalPrice);
             price = totalPrice.reduce(function (a, b) {
                 return parseInt(a, 10) + parseInt(b, 10);
             });
@@ -463,7 +466,6 @@ $(function () {
             pizzaList.append(pizzaDetails);
             pizzaList.append(deletePizza);
             pizzaCart.append(pizzaList);
-
         }
 
         const priceDiv = $('<div class="total-price">');
@@ -508,9 +510,57 @@ $(function () {
     });
 
     btnConfirm.on('click', function () {
-        confirm.empty();
-        $('.pizza-cart').empty();
         sessionStorage.clear();
+        cartStep.fadeOut(100);
         finishStep.fadeIn(2000);
+        showFinishStep();
+
+        const date = new Date();
+
+        const day = date.getDate();
+        let properDay;
+        if (day.length === 0) {
+            properDay = "0" + day;
+        } else {
+            properDay = day;
+        }
+
+        const month = date.getMonth();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"];
+
+        const year = date.getFullYear();
+
+        const hour = date.getHours();
+        const minutes = date.getMinutes();
+
+        const orderDate = properDay + ' ' +  monthNames[month] + ' ' +  year + ' ' + hour + ':' +  minutes;
+
+        const dateOrder = $('.placed-on span');
+        dateOrder.text(orderDate);
+
+        let start = "01:00";
+        const interval = setInterval(function() {
+
+            const timer = start.split(':');
+
+            let minutes = parseInt(timer[0], 10);
+            let seconds = parseInt(timer[1], 10);
+
+            --seconds;
+
+            minutes = (seconds < 0) ? --minutes : minutes;
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+            $('.timer').html(minutes + ':' + seconds);
+
+            if (minutes < 0) clearInterval(interval);
+            if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+            start = minutes + ':' + seconds;
+        }, 1000);
+
+        const number = $('.number');
+        number.text(Math.floor(Math.random() * 99999) + 1  )
     });
 });
