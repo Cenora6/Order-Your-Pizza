@@ -168,9 +168,8 @@ $(function () {
     sizeButtons.on('click', function () {
         pizzaSizePrice = $('input[name="size"]:checked').val();
         pizzaSizeValue = $('input[name="size"]:checked').attr('id');
-        pizzaSizeStep.fadeOut(300);
-        showCrustStep();
-        pizzaCrustStep.fadeIn(2000);
+        pizzaSizeStep.fadeOut(1000);
+        pizzaCrustStep.fadeIn(1000);
     });
 
     crustButtons.on('click', function () {
@@ -476,8 +475,7 @@ $(function () {
         cartStep.append(priceDiv);
     }
 
-    const deleteButton = $('.delete');
-    cartStep.on('click', deleteButton, function (e) {
+    cartStep.on('click', $('button'), function (e) {
 
         let index;
         if($(e.target).parent().prop('tagName') === "LI") {
