@@ -352,7 +352,7 @@ label[for=cheeseFilled] {
     color: #ffd147;
     font-weight: 700;
     z-index: 1;
-    background: url(https://cdn5.f-cdn.com/contestentries/1532532/23450105/5d210a4d2e962_thumb900.jpg) center center;
+    background: #ffd147 url(https://cdn5.f-cdn.com/contestentries/1532532/23450105/5d210a4d2e962_thumb900.jpg) center center;
     background-size: 2rem;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -894,7 +894,6 @@ label[for=cheeseFilled] {
     }
 
     .main-panel {
-        height: 65vh;
         width: 30rem;
     }
 
@@ -913,7 +912,7 @@ label[for=cheeseFilled] {
     }
 
     .btn-next, .btn-prev {
-        bottom: -5rem;
+        bottom: 0;
     }
 
     .confirm .single {
