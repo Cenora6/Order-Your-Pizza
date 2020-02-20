@@ -843,32 +843,6 @@ label[for=cheeseFilled] {
     cursor: pointer;
 }
 
-.fadeIn {
-    animation: fadeIn 1s;
-}
-
-.fadeOut {
-    animation: fadeOut .3s;
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 ::-webkit-scrollbar {
     width: 10px;
 }

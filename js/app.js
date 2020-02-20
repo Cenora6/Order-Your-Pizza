@@ -10,6 +10,8 @@ $(function () {
     const image = sizeForm.find('img');
     const confirm = $('.confirm');
 
+    console.log(cart)
+
     sizeChoose.css({
         top: "0.4rem",
         left: "0.2rem",
