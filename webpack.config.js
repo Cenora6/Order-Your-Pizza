@@ -13,7 +13,7 @@ module.exports = (env) => {
       entry: "./js/app.js",
       output: {
           filename: "out.js",
-          path: path.resolve(__dirname, "build")
+          path: (path.resolve(__dirname, "build"))
       },
       plugins: [
           new Html({
@@ -21,7 +21,7 @@ module.exports = (env) => {
               template: './index.html'
           }),
           new MiniCSS({
-              filename: "app.css",
+              filename: "style.css",
           })
       ],
       module: {
