@@ -829,6 +829,7 @@ label[for=cheeseFilled] {
     align-items: center;
     flex-direction: column;
     margin: 1rem;
+    text-align: center;
 }
 
 .confirmation .cancel-btn {
@@ -862,22 +863,22 @@ label[for=cheeseFilled] {
 @media only screen and (max-width: 768px) {
 
     html {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     body::before {
-        top: -80%;
+        top: -75%;
         left: -73%;
     }
 
     body::after {
-        top: 6%;
-        left: -72%;
+        top: 13%;
+        left: -100%;
         height: 20rem;
     }
 
     .header img {
-        width: 35%;
+        width: 40%;
         top: -5%;
     }
 
@@ -889,27 +890,35 @@ label[for=cheeseFilled] {
 
     h2 {
         font-size: 3rem;
+        margin-bottom: 2rem;
     }
 
     .main-panel {
-        height: 70vh;
+        height: 65vh;
+        width: 30rem;
     }
 
     .panel {
         width: 100%;
-        height: 100vh;
+        height: 90vh;
+        margin-top: 7rem;
     }
 
     .panel::before {
-        width: 75%;
+        width: 85%;
     }
 
     .panel::after {
-        width: 65%;
+        width: 75%;
     }
 
     .btn-next, .btn-prev {
         bottom: -5rem;
+    }
+
+    .confirm .single {
+        margin: 0;
+        width: 100%;
     }
 
     .size {
@@ -923,7 +932,6 @@ label[for=cheeseFilled] {
 
     .error {
         top: auto;
-        bottom: 20rem;
     }
 
     .type img {
@@ -942,7 +950,11 @@ label[for=cheeseFilled] {
     }
 
     .window-popup {
-        bottom: 25%;
+        bottom: 15%;
+    }
+
+    .window-popup p {
+        margin: 0 1rem;
     }
 
     .window-popup .btns button {
