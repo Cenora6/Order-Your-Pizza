@@ -498,10 +498,10 @@ $(function () {
     btnCancel.on('click', function () {
         confirm.empty();
         $('.pizza-cart').empty();
-        sessionStorage.clear();
         finishStep.fadeOut(1000);
         pizzaSizeStep.fadeIn(1000);
         showSizeStep();
+        sessionStorage.clear();
     });
 
     btnConfirm.on('click', function () {
@@ -558,4 +558,5 @@ $(function () {
         const number = $('.number');
         number.text(Math.floor(Math.random() * 99999) + 1  )
     });
+
 });
