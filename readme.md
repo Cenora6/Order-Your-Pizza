@@ -12,8 +12,8 @@
 | :-------------:|--------------|
 | HTML5 | A markup language used for structuring, and presenting content on the World Wide Web. |
 | CSS | A simple mechanism for adding style to Web documents. |
-| jQuery (https://www.npmjs.com/package/jquery) | JavaScript library for DOM operations |
-| Webpack (https://www.npmjs.com/package/webpack) | Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand.  |
+| [jQuery] (https://www.npmjs.com/package/jquery) | JavaScript library for DOM operations |
+| [Webpack] (https://www.npmjs.com/package/webpack) | Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand.  |
 
 ## Installation:
 
